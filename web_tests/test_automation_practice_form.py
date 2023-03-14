@@ -58,17 +58,15 @@ def test_submit(open_browser):
     app.automation_practice_form.press_submit()
 
     # THEN
-    browser.element('.table').all('td').even.should(
-        have.exact_texts(
-            'Aleksandra Krivoruchenko',
-            'test@test.com',
-            'Female',
-            '8922121245',
-            '11 December,1997',
-            'Computer Science',
-            'Sports, Reading, Music',
-            'foto.jpeg',
-            'Tyumen, Moskovskaya Street 42',
-            'NCR Noida',
-        )
+    app.automation_practice_form.then(
+        name='Aleksandra Krivoruchenko',
+        email='test@test.com',
+        gender='Female',
+        number='8922121245',
+        dateOfBirth='11 December,1997',
+        subject='Computer Science',
+        hobby='Sports, Reading, Music',
+        picture='foto.jpeg',
+        address='Tyumen, Moskovskaya Street 42',
+        stateAndCity='NCR Noida'
     )

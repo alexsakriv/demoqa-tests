@@ -23,3 +23,20 @@ def select_state_and_city(state, city):
 
 def press_submit():
     browser.element('#submit').press_enter()
+
+
+def then(name, email, gender, number, dateOfBirth, subject, hobby, picture, address, stateAndCity):
+    browser.element('.table').all('td').even.should(
+        have.exact_texts(
+            name,
+            email,
+            gender,
+            number,
+            dateOfBirth,
+            subject,
+            hobby,
+            picture,
+            address,
+            stateAndCity,
+        )
+    )
