@@ -10,31 +10,34 @@ def test_submit(open_browser):
     app.automation_practice_form.given_opened()
 
     # WHEN
-    browser.element('#firstName').type('Aleksandra')
-    browser.element('#lastName').type('Krivoruchenko')
-    browser.element('#userEmail').type('test@test.com')
-    browser.element('[name=gender][value=Female]+label').click()
-    browser.element('#userNumber').type('8922121245')
+    app.automation_practice_form.input_info(
+        firstName='Aleksandra',
+        lastName='Krivoruchenko',
+        userEmail='test@test.com',
+        userNumber='8922121245',
+        address='Tyumen, Moskovskaya Street 42'
+    )
 
-    browser.element('#dateOfBirthInput').click()
-    browser.element('.react-datepicker__month-select').send_keys('December')
-    browser.element('.react-datepicker__year-select').send_keys('1997')
-    browser.element(f'.react-datepicker__day--0{11}').click()
+    app.radiobutton.select(type='gender', value='Female')
 
-    browser.element('#subjectsInput').click().type('computer')
-    browser.all('.subjects-auto-complete__option').element_by(have.exact_text('Computer Science')).click()
+    app.datepicker.select(
+        date_type='dateOfBirthInput',
+        month='December',
+        year='1997',
+        day='11'
+    )
 
-    browser.all('[for^=hobbies-checkbox]').element_by(have.exact_text('Sports')).click()
-    browser.all('[for^=hobbies-checkbox]').element_by(have.exact_text('Reading')).click()
-    browser.all('[for^=hobbies-checkbox]').element_by(have.exact_text('Music')).click()
+    app.dropdown.select(input_data='computer', select_data='Computer Science')
+
+    app.checkbox.select(type='hobbies', value='Sports')
+    app.checkbox.select(type='hobbies', value='Reading')
+    app.checkbox.select(type='hobbies', value='Music')
 
     browser.element('#uploadPicture').set_value(
         os.path.abspath(
             os.path.join(os.path.dirname(web_tests.__file__), 'resources/foto.jpeg')
         )
     )
-
-    browser.element('#currentAddress').type('Tyumen, Moskovskaya Street 42')
 
     browser.element('#state').perform(command.js.scroll_into_view).click()
     browser.all('[id^=react-select][id*=option]').element_by(have.exact_text('NCR')).click()
