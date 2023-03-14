@@ -1,8 +1,6 @@
-import os
 from selene.support.shared import browser
-from selene import command, have
-import web_tests
-from demoqa_tests.model import app
+from selene import have
+from demoqa_tests import app
 
 
 def test_submit(open_browser):
@@ -18,7 +16,10 @@ def test_submit(open_browser):
         address='Tyumen, Moskovskaya Street 42'
     )
 
-    app.radiobutton.select(type='gender', value='Female')
+    app.radiobutton.select(
+        type='gender',
+        value='Female'
+    )
 
     app.datepicker.select(
         date_type='dateOfBirthInput',
@@ -27,24 +28,34 @@ def test_submit(open_browser):
         day='11'
     )
 
-    app.dropdown.select(input_data='computer', select_data='Computer Science')
-
-    app.checkbox.select(type='hobbies', value='Sports')
-    app.checkbox.select(type='hobbies', value='Reading')
-    app.checkbox.select(type='hobbies', value='Music')
-
-    browser.element('#uploadPicture').set_value(
-        os.path.abspath(
-            os.path.join(os.path.dirname(web_tests.__file__), 'resources/foto.jpeg')
-        )
+    app.dropdown.select(
+        input_data='computer',
+        select_data='Computer Science'
     )
 
-    browser.element('#state').perform(command.js.scroll_into_view).click()
-    browser.all('[id^=react-select][id*=option]').element_by(have.exact_text('NCR')).click()
-    browser.element('#city').click()
-    browser.all('[id^=react-select][id*=option]').element_by(have.exact_text('Noida')).perform(command.js.click)
+    app.checkbox.select(
+        type='hobbies',
+        value='Sports'
+    )
+    app.checkbox.select(
+        type='hobbies',
+        value='Reading'
+    )
+    app.checkbox.select(
+        type='hobbies',
+        value='Music'
+    )
 
-    browser.element('#submit').press_enter()
+    app.uploadPicture.select(
+        name='foto.jpeg'
+    )
+
+    app.automation_practice_form.select_state_and_city(
+        state='NCR',
+        city='Noida'
+    )
+
+    app.automation_practice_form.press_submit()
 
     # THEN
     browser.element('.table').all('td').even.should(
