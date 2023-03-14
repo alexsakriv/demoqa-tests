@@ -2,11 +2,12 @@ import os
 from selene.support.shared import browser
 from selene import command, have
 import web_tests
+from demoqa_tests.model import app
 
 
-def test_submit():
+def test_submit(open_browser):
     # GIVEN
-    browser.open('https://demoqa.com/automation-practice-form')
+    app.automation_practice_form.given_opened()
 
     # WHEN
     browser.element('#firstName').type('Aleksandra')
