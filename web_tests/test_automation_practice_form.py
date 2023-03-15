@@ -1,11 +1,13 @@
 from selene.support.shared import browser
-from selene import have
+from selene import have, command
 from demoqa_tests import app
 
 
 def test_submit(open_browser):
     # GIVEN
     app.automation_practice_form.given_opened()
+
+    app.automation_practice_form.remove_ads()
 
     # WHEN
     app.automation_practice_form.input_info(
