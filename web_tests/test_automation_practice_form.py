@@ -2,6 +2,7 @@ from selene.support.shared import browser
 from selene import have, command
 from demoqa_tests import app
 import allure
+from allure import attachment_type
 
 
 def test_submit(open_browser):
@@ -61,6 +62,7 @@ def test_submit(open_browser):
 
     with allure.step('Нажимаем кнопку "Submit"'):
         app.automation_practice_form.press_submit()
+
 
     # THEN
     with allure.step('Проверяем данные на соответствие введеным данным'):
