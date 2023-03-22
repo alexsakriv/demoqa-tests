@@ -19,10 +19,10 @@ def open_browser():
             "enableVideo": True
         }
     }
-
     options.capabilities.update(selenoid_capabilities)
+
     driver = webdriver.Remote(
-        command_executor="https://user1%1234@selenoid:autotests.cloud/wd/hub",
+        command_executor="https://user1:1234@selenoid.autotests.cloud/wd/hub",
         options=options)
 
     browser.config.driver = driver
