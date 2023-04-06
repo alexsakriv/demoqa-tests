@@ -28,3 +28,4 @@ UI тест написан на проверку формы заполнения
 
 Видео прохождения теста:
 
+https://jenkins.autotests.cloud/job/alexsakriv_qa_guru_python_3_10/21/allure/data/attachments/dd6bec149e4e10a1.html
