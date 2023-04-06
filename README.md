@@ -32,7 +32,7 @@ https://jenkins.autotests.cloud/job/alexsakriv_qa_guru_python_3_10/21/allure/dat
 
 ## <img width="30px" title="Tg" src="https://user-images.githubusercontent.com/118905261/230376221-fc9f88c7-a18f-4cda-b867-e1bb9abfe0c2.png"> Отчет в Телеграм
 
-В результате выполнения теста отправляется отчет в Телеграм
+В результате выполнения теста отправляется отчет в Телеграм с временем выполнения теста и ссылкой на Allure отчет
 
 <img width="326" alt="Снимок экрана 2023-04-06 в 15 17 41" src="https://user-images.githubusercontent.com/118905261/230376608-0aef9327-c892-4a7a-aba6-13999a28fcc4.png">
 
